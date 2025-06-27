@@ -6,21 +6,38 @@ const SimpleSwitch = ({
   colorOff = '#CD7070',
   labelOn = 'ON',
   labelOff = 'OFF',
+  defaultToggled = false,
+  onToggle = () => {}
 }) => {
   const clampedSize = Math.max(1, Math.min(size, 50));
-  const unit = 10;
-  const width = clampedSize * unit;
-  const aspectRatio = 8 / 3;
-  const height = width / aspectRatio;
-
-  const [toggled, setToggled] = useState(false);
-
+  const width = clampedSize * 10;
+  const height = width / (8 / 3);
   const circleSize = height * 0.8;
   const margin = (height - circleSize) / 2;
   const leftStart = margin;
   const leftEnd = width - circleSize - margin;
 
-  const handleClick = () => setToggled(prev => !prev);
+  const [toggled, setToggled] = useState(defaultToggled);
+
+  const handleClick = () => {
+    setToggled((prev) => {
+      const newValue = !prev;
+      onToggle(newValue);
+      return newValue;
+    });
+  };
+
+  const switchStyle = {
+    width: `${width}px`,
+    height: `${height}px`,
+    background: '#D9D9D9',
+    borderRadius: '100px',
+    border: 'none',
+    cursor: 'pointer',
+    padding: 0,
+    position: 'relative',
+    overflow: 'hidden'
+  };
 
   const circleStyle = {
     width: `${circleSize}px`,
@@ -29,34 +46,29 @@ const SimpleSwitch = ({
     top: `${margin}px`,
     left: toggled ? `${leftEnd}px` : `${leftStart}px`,
     background: toggled ? colorOn : colorOff,
-    borderRadius: '9999px',
-    transition: 'all 0.5s ease',
+    borderRadius: '50%',
+    transition: 'all 0.4s ease',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     color: '#fff',
+    fontSize: `${circleSize * 0.3}px`,
     fontWeight: 'bold',
     fontFamily: 'sans-serif',
-    fontSize: `${circleSize * 0.25}px`,
+    userSelect: 'none'
   };
 
   return (
-    <div
+    <button
+      type="button"
+      aria-pressed={toggled}
       onClick={handleClick}
-      style={{
-        width: `${width}px`,
-        height: `${height}px`,
-        position: 'relative',
-        background: '#D9D9D9',
-        borderRadius: '100px',
-        overflow: 'hidden',
-        cursor: 'pointer',
-      }}
+      style={switchStyle}
     >
       <div style={circleStyle}>
         {toggled ? labelOn : labelOff}
       </div>
-    </div>
+    </button>
   );
 };
 
