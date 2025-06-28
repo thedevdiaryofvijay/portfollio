@@ -1,4 +1,3 @@
-import Sidebar from "./catgory";
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import ShootingStarBackground from "./background/shootingstars";
@@ -14,6 +13,7 @@ import LoadingSimple from "./Loading/loadingsimple";
 
 import SimpleSwitch from "./Switch/simple_switch";
 import CircleLoader from "./Loading/loadingsimple";
+import Navbar from "./Navbar/Simplenavbar";
 
 
 
@@ -22,9 +22,9 @@ function App() {
 
     
     <div style={{ display: "flex" }}>
-      
+      <Navbar/>
       {/*import Logo from "./Logo/logo";*/}
-      <Sidebar />
+      
         <div
     style={{
       flex: 1,
