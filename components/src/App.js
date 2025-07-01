@@ -14,14 +14,16 @@ import LoadingSimple from "./Loading/loadingsimple";
 import SimpleSwitch from "./Switch/simple_switch";
 import CircleLoader from "./Loading/loadingsimple";
 import Navbar from "./Navbar/Simplenavbar";
-
+import WavyText from "./textanimation/waveytext";
+import WaveTexth from "./textanimation/waveh";
+import WavyTextg from "./textanimation/waveg";
 
 
 function App() {
   return (
 
     
-    <div style={{ display: "flex" }}>
+    <div style={{ width:"100vw !important", display: "flex" }}>
       <Navbar/>
       {/*import Logo from "./Logo/logo";*/}
       
@@ -113,6 +115,48 @@ function App() {
             }
           />
         </Routes>
+        <div className="half">
+        <WavyText
+        text={"vijay kumar k"}
+        charSpacing={0.8}
+        canvasWidth={50}
+        fontWeight={0.5}
+        noiseScale={0.009}
+        amplitude={10}
+        animateColor={true}
+        colorCycleInterval={3000}
+        canvasHeight={500}
+        fontSize={10}
+         gradientStops={[
+    { color: "#ff0080", position: 0 },
+    { color: "#7928ca", position: 0.5 },
+    { color: "#2af598", position: 1 },
+  ]}
+        gradient={true}
+      />
+  
+  
+ </div>
+      <WaveTexth text="Wave    Me On Hover!" />
+      <WavyTextg
+        text={"vijay kumar k"}
+        charSpacing={1.3}
+        canvasWidth={50}
+        fontWeight={1}
+        noiseScale={0.009}
+        amplitude={10}
+        animateColor={true}
+        colorCycleInterval={3000}
+        canvasHeight={500}
+        fontSize={28}
+        background="null"
+         gradientStops={[
+    { color: "#ff0080", position: 0 },
+    { color: "#7928ca", position: 0.5 },
+    { color: "#2af598", position: 1 },
+  ]}
+        gradient={true}
+      />
       </div>
       </div>
     </div>

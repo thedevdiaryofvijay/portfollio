@@ -37,7 +37,7 @@ const Navbar = () => {
       zIndex: 999,
     },
     container: {
-      maxWidth: '1100px',
+      maxWidth: '90vw',
       margin: '0 auto',
       padding: '0 1rem',
     },
